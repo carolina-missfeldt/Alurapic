@@ -1,0 +1,39 @@
+.panel-body {
+    padding: 0;
+}
+
+.panel {
+    height: 240px;
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+    padding: 2px;
+}
+
+.efeito:hover {
+    transition: all 0.3s;
+    transform: scale(1.15);
+    box-shadow: 10px 10px 15px;
+}
+
+.efeito {
+    box-shadow: 2px 2px 15px;
+    transition: all 1s;
+
+}
+
+.painel img{
+    height: 180px;
+}
+
+.btn-block {
+    width: 98.5%;
+    position: absolute;
+    bottom: 5px;
+}
+
+.input-group input,
+.input-group span a {
+    height: auto !important;
+    padding: 0.4em !important;
+}
