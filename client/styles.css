@@ -1,9 +1,10 @@
 .panel-body {
     padding: 0;
+    height: 225px;
+    
 }
 
 .panel {
-    height: 240px;
     overflow: hidden;
     position: relative;
     box-sizing: border-box;
@@ -26,11 +27,17 @@
     height: 180px;
 }
 
-.btn-block {
-    width: 98.5%;
+.box-buttons {
+    width: 100%;
     position: absolute;
-    bottom: 5px;
+    bottom: 0;
+    margin-left: -2px;
+    padding: 5px;
 }
+
+.box-buttons .col-sm-6 {
+    padding: 1px;
+} 
 
 .input-group input,
 .input-group span a {

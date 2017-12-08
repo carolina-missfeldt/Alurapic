@@ -11,6 +11,7 @@ import { CadastroService } from './../cadastro/cadastro.service';
 export class ListagemComponent implements OnInit { 
 
     fotos: FotoComponent[] = [];
+    mensagem: string = '';
 
     constructor( private cadastroService: CadastroService) {
         
@@ -22,11 +23,19 @@ export class ListagemComponent implements OnInit {
 
     removerFoto(foto){
         this.cadastroService.remover(foto)
-        .subscribe(dados => {
-            alert(`Foto ${foto.titulo} removida com sucesso`)
-            this.listarFotos()
+        .subscribe(
+            success => {
+                
+                let novasFotos = this.fotos.slice(0);
+                let indice = novasFotos.indexOf(foto);
+                novasFotos.splice(indice, 1);
+                this.fotos = novasFotos;
+                this.mensagem = 'Foto removida'
         },
-            error => {console.log('não foi possível remover a foto')}
+            error => {
+                console.log('não foi possível remover a foto')
+                this.mensagem = 'Não foi possível remover a foto'
+            }
         )
     }
 
