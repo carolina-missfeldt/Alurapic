@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FotoComponent } from '../foto/foto.component';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CadastroService } from './cadastro.service';
 
@@ -15,9 +15,11 @@ export class CadastroComponent implements OnInit {
     foto: FotoComponent = new FotoComponent();
     meuForm: FormGroup;
 
-    constructor(private cadastroService: CadastroService, private fb: FormBuilder, private route: ActivatedRoute) {
-
-    }
+    constructor(
+        private cadastroService: CadastroService, 
+        private fb: FormBuilder, 
+        private route: ActivatedRoute, 
+        private router: Router) {}
 
     ngOnInit() {
         this.meuForm = this.fb.group({
@@ -36,8 +38,10 @@ export class CadastroComponent implements OnInit {
 
                 this.cadastroService.buscaPorId(id)
                     .subscribe(
-                    foto => this.foto = foto,
-                    erro => console.log(erro));
+                    foto => {this.foto = foto
+                    },
+                    erro => {console.log(erro)}
+                );
             }
         })
     }
@@ -47,7 +51,8 @@ export class CadastroComponent implements OnInit {
         this.cadastroService.cadastrar(this.foto)
             .subscribe(() => {
                 alert('Foto salva');
-                this.foto = new FotoComponent
+                this.foto = new FotoComponent,
+                this.router.navigate([''])
 
             }, error => console.log(error))
 
