@@ -12,28 +12,26 @@ export class ListagemComponent implements OnInit {
 
     fotos: FotoComponent[] = [];
     mensagem: string = '';
-
+    nomeFoto: string;
     constructor( private cadastroService: CadastroService) {
         
     }
 
     ngOnInit(){
         this.listarFotos()
+        
     }
 
     removerFoto(foto){
         this.cadastroService.remover(foto)
         .subscribe(
             success => {
-                
                 let novasFotos = this.fotos.slice(0);
                 let indice = novasFotos.indexOf(foto);
                 novasFotos.splice(indice, 1);
                 this.fotos = novasFotos;
-                this.mensagem = 'Foto removida'
         },
             error => {
-                console.log('não foi possível remover a foto')
                 this.mensagem = 'Não foi possível remover a foto'
             }
         )

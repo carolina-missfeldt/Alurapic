@@ -44,3 +44,16 @@
     height: auto !important;
     padding: 0.4em !important;
 }
+.box-img {
+    min-width: 200px;
+    min-height: 280px;
+    margin-top: 2em;
+    border: 1px solid rgba(0,0,0,0.3);
+}
+.foto-title {
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+}
+
+.alert-danger {
+    margin-top: 10px;
+}

@@ -14,6 +14,7 @@ export class CadastroComponent implements OnInit {
 
     foto: FotoComponent = new FotoComponent();
     meuForm: FormGroup;
+    mensagem: string = '';
 
     constructor(
         private cadastroService: CadastroService, 
@@ -49,10 +50,10 @@ export class CadastroComponent implements OnInit {
     cadastrar(event) {
         event.preventDefault();
         this.cadastroService.cadastrar(this.foto)
-            .subscribe(() => {
-                alert('Foto salva');
-                this.foto = new FotoComponent,
-                this.router.navigate([''])
+            .subscribe(res => {
+                this.mensagem = res.mensagem
+                this.foto = new FotoComponent
+                if(!res.inclusao) this.router.navigate(['']);
 
             }, error => console.log(error))
 
