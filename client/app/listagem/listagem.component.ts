@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Http } from '@angular/http';
 import { FotoComponent } from './../foto/foto.component';
 import { CadastroService } from './../cadastro/cadastro.service';
@@ -13,13 +13,14 @@ export class ListagemComponent implements OnInit {
     fotos: FotoComponent[] = [];
     mensagem: string = '';
     nomeFoto: string;
+    foto: FotoComponent;
+    id: string;
     constructor( private cadastroService: CadastroService) {
         
     }
 
     ngOnInit(){
-        this.listarFotos()
-        
+        this.listarFotos()    
     }
 
     removerFoto(foto){
@@ -40,7 +41,9 @@ export class ListagemComponent implements OnInit {
     listarFotos() {
         this.cadastroService.listar()
         .subscribe( fotos =>{
-            this.fotos = fotos;
+            this.fotos = fotos
+
         }, error => console.log(error))
     }
+
 }

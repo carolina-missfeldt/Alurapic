@@ -11,6 +11,7 @@ import { FotoModule } from './foto/foto.module';
 import { PainelModule } from './painel/painel.module';
 import { routing } from './app.routes';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ImgDirective } from './cadastro/img.directive';
 
 @NgModule({
   imports:      [ 
@@ -22,7 +23,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule
   ],
-  declarations: [ AppComponent, ListagemComponent, CadastroComponent ],
+  declarations: [ 
+    AppComponent,
+    ListagemComponent, 
+    CadastroComponent, 
+    ImgDirective 
+  ],
   providers: [
     CadastroService
   ],

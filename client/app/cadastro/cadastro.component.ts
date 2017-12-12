@@ -3,6 +3,7 @@ import { FotoComponent } from '../foto/foto.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CadastroService } from './cadastro.service';
+import { ImgDirective } from './img.directive';
 
 
 @Component({
@@ -15,6 +16,7 @@ export class CadastroComponent implements OnInit {
     foto: FotoComponent = new FotoComponent();
     meuForm: FormGroup;
     mensagem: string = '';
+    imgDefault: string = '../../img/img-default.jpg';
 
     constructor(
         private cadastroService: CadastroService, 
@@ -30,7 +32,6 @@ export class CadastroComponent implements OnInit {
             url: ['', Validators.required],
             descricao: [''],
         });
-
         this.route.params.subscribe(params => {
 
             let id = params['id'];
@@ -49,9 +50,17 @@ export class CadastroComponent implements OnInit {
 
     cadastrar(event) {
         event.preventDefault();
+        console.log('texto do input ' + this.foto.url);
+
         this.cadastroService.cadastrar(this.foto)
             .subscribe(res => {
-                this.mensagem = res.mensagem
+                console.log('antes do if ' + this.foto.url);
+                if(this.foto.url.indexOf('https://') || this.foto.url.indexOf('http://' )) {
+                    this.foto.url = this.foto.url;
+                } 
+                this.foto.url = this.imgDefault;
+                this.mensagem = res.mensagem;
+                console.log('depois do if ' + this.foto.url);
                 this.foto = new FotoComponent
                 if(!res.inclusao) this.router.navigate(['']);
 
