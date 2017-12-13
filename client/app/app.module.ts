@@ -12,6 +12,7 @@ import { PainelModule } from './painel/painel.module';
 import { routing } from './app.routes';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ImgDirective } from './cadastro/img.directive';
+import { BotaoModule } from './botao/botao.module';
 
 @NgModule({
   imports:      [ 
@@ -21,13 +22,14 @@ import { ImgDirective } from './cadastro/img.directive';
     FotoModule,
     routing,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BotaoModule
   ],
   declarations: [ 
     AppComponent,
     ListagemComponent, 
     CadastroComponent, 
-    ImgDirective 
+    ImgDirective
   ],
   providers: [
     CadastroService

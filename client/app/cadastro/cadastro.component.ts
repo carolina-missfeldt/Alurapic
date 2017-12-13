@@ -50,20 +50,18 @@ export class CadastroComponent implements OnInit {
 
     cadastrar(event) {
         event.preventDefault();
-        console.log('texto do input ' + this.foto.url);
-
         this.cadastroService.cadastrar(this.foto)
             .subscribe(res => {
-                console.log('antes do if ' + this.foto.url);
-                if(this.foto.url.indexOf('https://') || this.foto.url.indexOf('http://' )) {
-                    this.foto.url = this.foto.url;
-                } 
-                this.foto.url = this.imgDefault;
-                this.mensagem = res.mensagem;
-                console.log('depois do if ' + this.foto.url);
+                // console.log('antes do if ' + this.foto.url);
+                // if(this.foto.url.substring(0, 8) != 'https://' || this.foto.url.substring(0, 7) != 'http://') {
+                //     this.foto.url = '../../img/img-default.jpg';
+                // }
+                // this.foto.url = this.foto.url;
+                this.mensagem = res.mensagem
+                console.log(this.foto)
                 this.foto = new FotoComponent
                 if(!res.inclusao) this.router.navigate(['']);
-
+                
             }, error => console.log(error))
 
     }

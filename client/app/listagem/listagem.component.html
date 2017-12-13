@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-                <p *ngIf="mensagem.length" class="alert alert-info">{{mensagem}}</p>
+            <p *ngIf="mensagem.length" class="alert alert-info">{{mensagem}}</p>
             <form>
                 <div class="input-group">
                     <span class="input-group-btn">
@@ -16,9 +16,7 @@
                 </div>
             </form>
         </div>
-        <!-- fim col-md-12 -->
     </div>
-    <!-- fim row -->
     <br>
 
     <div class="row">
@@ -26,10 +24,15 @@
             <foto titulo="{{foto.titulo}}" url="{{foto.url}}">
             </foto>
             <div class="row box-buttons">
-                <div class="col-sm-6"><button class="btn btn-primary btn-block" [routerLink]="['/cadastro', foto._id]">Editar</button></div>
-                <div class="col-sm-6"><button class="btn btn-danger btn-block" (click)="removerFoto(foto)">Remover</button></div>
+                <div class="col-sm-6">
+                    <botao nome="Editar" estilo="btn-primary btn-block" [routerLink]="['/cadastro', foto._id]"></botao>
+
+                </div>
+                <div class="col-sm-6">
+                    <botao nome="Remover" estilo="btn-danger btn-block" (acao)="removerFoto(foto)" confirmacao="true"></botao>
+
+                </div>
             </div>
         </painel>
     </div>
-    <!-- fim row -->
 </div>
