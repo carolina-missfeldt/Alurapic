@@ -20,7 +20,7 @@
     <br>
 
     <div class="row">
-        <painel *ngFor="let foto of fotos | filtroPorTitulo: textoProcurado.value" titulo="{{foto.titulo | uppercase}}" class="col-md-3 painel">
+        <painel #painel *ngFor="let foto of fotos | filtroPorTitulo: textoProcurado.value" titulo="{{foto.titulo | uppercase}}" class="col-md-3 painel">
             <foto titulo="{{foto.titulo}}" url="{{foto.url}}">
             </foto>
             <div class="row box-buttons">
@@ -29,7 +29,7 @@
 
                 </div>
                 <div class="col-sm-6">
-                    <botao nome="Remover" estilo="btn-danger btn-block" (acao)="removerFoto(foto)" confirmacao="true"></botao>
+                    <botao nome="Remover" estilo="btn-danger btn-block" (acao)="removerFoto(foto, painel)" confirmacao="true"></botao>
 
                 </div>
             </div>
